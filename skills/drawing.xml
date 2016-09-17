@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skillTutorial>
+	<segment>
+		<text>
+			Processing is a drawing-based language, so you will first learn how to draw basic shapes.
+		</text>
+		<text>
+			Consider the following code:
+		</text>
+		<code runnable="true" pickable="true" display="rect">
+			rect(@Picker("number", 100), @Picker("number", 100), @Picker("number", 200), @Picker("number", 200));
+		</code>
+		<codeDisplay id="rect" />
+		<text>
+			Try tapping the numbers and dragging the slider.
+		</text>
+		<text>
+			`rect()` draws a rectangle at the specified coordinates. The first two numbers 
+			are the `x` and `y` coordinates of the top-left corner of the rectangle. The third and 
+			fourth numbers are the `width` and `height` of the rectangle:
+		</text>
+		<code>
+			rect(x, y, width, height)
+		</code>
+		<text>
+			Note that the `x` values start from `0` at the left edge and increase going 
+			to the right, while the `y` values start from `0` at the top and increase going down.
+		</text>
+	</segment>
+	<segment>
+		<text>
+			Here are some other basic drawing functions:
+		</text>
+		<code runnable="true" pickable="true" display="basicDrawing">
+			rect(@Picker("number", 100), @Picker("number", 100), @Picker("number", 100), @Picker("number", 100));
+			ellipse(@Picker("number", 400), @Picker("number", 100), @Picker("number", 200), @Picker("number", 100));
+			line(@Picker("number", 100), @Picker("number", 300), @Picker("number", 300), @Picker("number", 400));
+			triangle(@Picker("number", 400), @Picker("number", 350), @Picker("number", 350), @Picker("number", 450), @Picker("number", 500), @Picker("number", 450));
+		</code>
+		<codeDisplay id="basicDrawing" />
+		<text>
+			Note that the shapes drawn later on (further down in the code) are drawn on top of 
+			the shapes drawn before them. This is because Processing interprets the code one line 
+			at a time from top to bottom.
+		</text>
+		<text>
+			`ellipse()` takes the coordinates of the ellipse's center followed by its width and 
+			height:
+		</text>
+		<code>
+			ellipse(centerX, centerY, width, height)
+		</code>
+		<text>
+			`line()` takes the coordinates for the two endpoints:
+		</text>
+		<code>
+			line(x1, y1, x2, y2)
+		</code>
+		<text>
+			`triangle()` takes the coordinates for the three points that make up the triangle:
+		</text>
+		<code>
+			triangle(x1, y1, x2, y2, x3, y3)
+		</code>
+	</segment>
+	<segment>
+		<text>
+			Do you want to add some color? `fill()` sets the color inside shapes:
+		</text>
+		<code runnable="true" pickable="true" display="fill">
+			fill(@Picker("color", #FF0000));
+			rect(100, 100, 100, 100);
+			
+			fill(@Picker("color", #00FF00));
+			ellipse(400, 100, 200, 100);
+		</code>
+		<codeDisplay id="fill" />
+		<text>
+			Shapes are drawn with the most recent fill color. You must call `fill()` before you 
+			draw the shape that you want with that fill. You can call `fill()` again to change the 
+			color for the next shape.
+		</text>
+	</segment>
+	<segment>
+		<text>
+			In addition to the fill color, you can change the stroke color and weight:
+		</text>
+		<code runnable="true" pickable="true" display="stroke">
+			stroke(@Picker("color", #0000FF));
+			strokeWeight(@Picker("number", 2, 1));
+			rect(100, 100, 100, 100);
+			
+			stroke(@Picker("color", #00FF00));
+			strokeWeight(@Picker("number", 10, 1));
+			ellipse(400, 100, 200, 100);
+		</code>
+		<codeDisplay id="stroke" />
+		<text>
+			The stroke is the border around the shape. The stroke weight refers to how thick the 
+			lines are.
+		</text>
+	</segment>
+	<segment>
+		<text>
+			Let's put all of these drawing functions together to draw a rocket:
+		</text>
+		<code runnable="true" pickable="true" display="rocket">
+			// Sky
+			background(@Picker("color", #85E8E2));
+			
+			// Nose
+			fill(@Picker("color", #2A4476));
+			triangle(@Picker("number", 150), @Picker("number", 120), @Picker("number", 250), @Picker("number", 120), @Picker("number", 200), @Picker("number", 50));
+			
+			// Engines
+			fill(@Picker("color", #6C6C6C));
+			triangle(@Picker("number", 170), @Picker("number", 300), @Picker("number", 140), @Picker("number", 350), @Picker("number", 200), @Picker("number", 350));
+			triangle(@Picker("number", 230), @Picker("number", 300), @Picker("number", 200), @Picker("number", 350), @Picker("number", 260), @Picker("number", 350));
+			
+			// Body
+			fill(@Picker("color", #C1C1C1));
+			rect(@Picker("number", 150), @Picker("number", 120), @Picker("number", 100), @Picker("number", 200));
+			
+			// Exhaust (hot!)
+			fill(@Picker("color", #BF3E3E));
+			triangle(@Picker("number", 150), @Picker("number", 350), @Picker("number", 190), @Picker("number", 350), @Picker("number", 170), @Picker("number", 400));
+			triangle(@Picker("number", 210), @Picker("number", 350), @Picker("number", 250), @Picker("number", 350), @Picker("number", 230), @Picker("number", 400));
+			
+			// Windows
+			fill(@Picker("color", #FFFFFF));
+			stroke(@Picker("color", #3AAA6F));
+			strokeWeight(@Picker("number", 4, 1));
+			ellipse(@Picker("number", 200), @Picker("number", 170), @Picker("number", 60), @Picker("number", 60));
+			ellipse(@Picker("number", 200), @Picker("number", 250), @Picker("number", 60), @Picker("number", 60));
+		</code>
+		<codeDisplay id="rocket" />
+		<text>
+			You haven't seen `background()` yet, but it is pretty simple. `background()` takes a 
+			color and fills the entire canvas with that color. Be careful - if you call 
+			`background()` after you have drawn shapes, then those shapes will be drawn over by 
+			the background color!
+		</text>
+		<text>
+			Also, the grayed-out lines are comments. If you put `//` in a line of code, the rest 
+			of the line following this will become a comment and won't be executed. This is useful 
+			for explaining the code, as is done above.
+		</text>
+		<text>
+			You should be able to make your own drawings in the main editor now.
+		</text>
+	</segment>
+	<segment>
+		<examplesList>
+			Basics/Structure/StatementsComments
+			Basics/Structure/Coordinates
+			CalsignLabs/Learning/Rocket
+		</examplesList>
+	</segment>
+</skillTutorial>

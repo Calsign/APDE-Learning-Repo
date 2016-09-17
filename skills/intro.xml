@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skillTutorial>
+	<segment>
+		<text>
+			Welcome to the APDE learning environment!
+		</text>
+		<text>
+			This tutorial system is designed to be example-based, encouraging you to learn by 
+			tinkering with existing code. However, a series of skill tutorials are available 
+			to guide you and teach you necessary concepts.
+		</text>
+		<text>
+			The skill tutorials are arranged in a tree. In order to complete a tutorial, you must 
+			complete each of its prerequisites, represented by arrows. You will find that there 
+			are many different ways to progress through the tutorials, so work at your own pace 
+			and learn about the topics that interest you!
+		</text>
+		<text>
+			Select "Next" to continue.
+		</text>
+	</segment>
+	<segment>
+		<text>
+			Throughout the tutorials, you will encounter code snippets such as the one below. 
+			Some of these snippets are runnable, which will allow you to use the Sandbox to 
+			quickly see what the code does.
+		</text>
+		<text>
+			Try pressing the run button:
+		</text>
+		<code runnable="true">
+			float radius = 100;
+			boolean pmousePressed = false;
+			
+			void setup() {
+			  fullScreen();
+			  colorMode(HSB, 360, 100, 100);
+			  strokeWeight(5);
+			  noFill();
+			}
+			
+			void draw() {
+			  background(0);
+			  stroke((frameCount / 4) % 360, 80, 80);
+			  ellipse(width / 2, height / 2, radius * 2, radius * 2);
+			  
+			  if (mousePressed &amp;&amp; sq(mouseX - width / 2) + sq(mouseY - height / 2) > sq(radius)) {
+			    float theta = atan2(mouseY - height / 2, mouseX - width / 2);
+			    line(width / 2 + cos(theta) * radius, height / 2 + sin(theta) * radius, mouseX, mouseY);
+			    
+			    if (pmousePressed) {
+			      float mag = sqrt(sq(mouseX - pmouseX) + sq(mouseY - pmouseY)) / 10;
+			      radius += mag;
+			    }
+			    
+			    pmousePressed = true;
+			  } else {
+			    radius -= min((radius - 100) * 0.05, 20);
+			    pmousePressed = false;
+			  }
+			}
+		</code>
+		<text>
+			You aren't expected to understand how this code works quite yet, as it uses some 
+			fairly advanced concepts. However, by the end of the tutorials, you will be able 
+			to create similar sketches.
+		</text>
+	</segment>
+</skillTutorial>
