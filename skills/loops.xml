@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skillTutorial>
+	<segment>
+		<text>
+			What if you want to have a different number of windows on the rocket? You could add 
+			more `ellipse()` calls, but this can become tedious; what if you want a hundred windows?
+		</text>
+		<text>
+			It turns out that, as variables can be used to simplify the radius of the windows, 
+			you can use a combination of variables and loops to simplify the number of windows as 
+			well.
+		</text>
+	</segment>
+	<segment>
+		<text>
+			Before we get to putting multiple windows on the rocket, let's take a look at a simpler 
+			example - multiple rectangles:
+		</text>
+		<code runnable="true" pickable="true" display="for">
+			for (int i = @Picker("number", 0); i &lt; @Picker("number", 10); i = i + @Picker("number", 1, 1)) {
+			  rect(@Picker("number", 50) + i * @Picker("number", 100), @Picker("number", 50), @Picker("number", 50), @Picker("number", 50));
+			}
+		</code>
+		<codeDisplay id="for" />
+		<text>
+			This is a for loop. There is an explanation on the next page.
+		</text>
+	</segment>
+	<segment>
+		<text>
+			The syntax for a for loop is as follows:
+		</text>
+		<code>
+			for (declaration; condition; increment) {
+			  statements
+			}
+		</code>
+		<text>
+			`declaration` is where you can declare a variable to increment. Standard practice is to 
+			declare `int i = 0`, where `i` stands for "increment". This is called once when the 
+			loop starts.
+		</text>
+		<text>
+			`condition` is a boolean check. This is generally `i &lt; total`, where `total` is the 
+			number of times that you want the loop to execute. The loop will evaluate this 
+			expression after each cycle. Boolean logic is explained in more detail in the Logic 
+			&amp; Conditionals tutorial.
+		</text>
+		<text>
+			`increment` is where you you increase the counting variable. For example, `i = i + 1` 
+			assigns `i` to be one greater than its current value, increasing it by one. This is 
+			called after the completion of each cycle.
+		</text>
+		<text>
+			`statements` are any lines of code that you want to execute every cycle of the loop. 
+			These statements can use `i`, as is done above. Statements between the curly braces 
+			(`{` and `}`) are executed every cycle and are typically indented two spaces for 
+			readability.
+		</text>
+		<text>
+			We normally start with `i = 0` because this is convention. This plays nicely with 
+			using `i &lt; total` because there are ten values from `0` to `9`, including `0` and 
+			`9`.
+		</text>
+		<text>
+			Note: If you have an increment that decreases `i` instead of increasing it - `i = i - 
+			1`, for example - then your loop will get stuck and the rest of the code won't 
+			execute because if you have a positive `total`, then decreasing `0` will never give 
+			you a positive number, so the condition will never evaluate as true!
+		</text>
+	</segment>
+	<segment>
+		<text>
+			We can now take advantage of a for loop to draw an arbitrary number of windows on our 
+			rocket:
+		</text>
+		<code runnable="true" pickable="true" display="rocketWindows">
+			// Number of windows
+			int numWindows = @Picker("number", 3, 0);
+			
+			// If we have more windows, then
+			// the rocket needs to be taller
+			int rocketHeight = 20 + numWindows * 80;
+			
+			// Sky
+			background(#85E8E2);
+			
+			// Nose
+			fill(#2A4476);
+			triangle(150, 120, 250, 120, 200, 50);
+			
+			// Engines
+			fill(#6C6C6C);
+			triangle(170, 100 + rocketHeight, 140, 150 + rocketHeight, 200, 150 + rocketHeight);
+			triangle(230, 100 + rocketHeight, 200, 150 + rocketHeight, 260, 150 + rocketHeight);
+			
+			// Body
+			fill(#C1C1C1);
+			rect(150, 120, 100, rocketHeight);
+			
+			// Exhaust (hot!)
+			fill(#BF3E3E);
+			triangle(150, 150 + rocketHeight, 190, 150 + rocketHeight, 170, 200 + rocketHeight);
+			triangle(210, 150 + rocketHeight, 250, 150 + rocketHeight, 230, 200 + rocketHeight);
+			
+			// Windows
+			fill(#FFFFFF);
+			stroke(#3AAA6F);
+			strokeWeight(4);
+			// Loop
+			for (int i = 0; i &lt; numWindows; i = i + 1) {
+			  ellipse(200, 170 + i * 80, 60, 60);
+			}
+		</code>
+		<codeDisplay id="rocketWindows" />
+		<text>
+			The for loop for the windows is relatively straightforward.
+		</text>
+		<text>
+			We're adding more windows, so we have to change the size of the body and the position 
+			of the engines and exhaust; `rocketHeight` is determined based on the number of windows 
+			and is used to display those shapes.
+		</text>
+	</segment>
+	<segment>
+		<examplesList>
+			Basics/Control/Iteration
+			Basics/Structure/WidthHeight
+			CalsignLabs/Learning/RandomRectangles
+		</examplesList>
+	</segment>
+</skillTutorial>

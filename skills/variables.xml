@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<skillTutorial>
+	<segment>
+		<text>Consider the rocket again:</text>
+		<code runnable="true" pickable="true" display="rocket">
+			// Sky
+			background(#85E8E2);
+			
+			// Nose
+			fill(#2A4476);
+			triangle(150, 120, 250, 120, 200, 50);
+			
+			// Engines
+			fill(#6C6C6C);
+			triangle(170, 300, 140, 350, 200, 350);
+			triangle(230, 300, 200, 350, 260, 350);
+			
+			// Body
+			fill(#C1C1C1);
+			rect(150, 120, 100, 200);
+			
+			// Exhaust (hot!)
+			fill(#BF3E3E);
+			triangle(150, 350, 190, 350, 170, 400);
+			triangle(210, 350, 250, 350, 230, 400);
+			
+			// Windows
+			fill(#FFFFFF);
+			stroke(#3AAA6F);
+			strokeWeight(4);
+			ellipse(200, 170, 60, 60);
+			ellipse(200, 250, 60, 60);
+		</code>
+		<codeDisplay id="rocket" />
+		<text>
+			What happens if we want to move the whole rocket over to the right? With the current 
+			code, we would need to change every `x` value each time that we want to slide the 
+			rocket. This is too much work.
+		</text>
+		<text>
+			Thankfully, we have variables!
+		</text>
+	</segment>
+	<segment>
+		<text>
+			In this example, we have introduced two variables that represent the `x` and `y` 
+			offsets of the entire rocket. This will be explained later:
+		</text>
+		<code runnable="true" pickable="true" display="rocketOffset">
+			// x and y offsets for entire rocket
+			int xOffset = @Picker("number", 100);
+			int yOffset = @Picker("number", 0);
+			
+			// Sky
+			background(#85E8E2);
+			
+			// Nose
+			fill(#2A4476);
+			triangle(xOffset + 150, yOffset + 120, xOffset + 250, yOffset + 120, xOffset + 200, yOffset + 50);
+			
+			// Engines
+			fill(#6C6C6C);
+			triangle(xOffset + 170, yOffset + 300, xOffset + 140, yOffset + 350, xOffset + 200, yOffset + 350);
+			triangle(xOffset + 230, yOffset + 300, xOffset + 200, yOffset + 350, xOffset + 260, yOffset + 350);
+			
+			// Body
+			fill(#C1C1C1);
+			rect(xOffset + 150, yOffset + 120, 100, 200);
+			
+			// Exhaust (hot!)
+			fill(#BF3E3E);
+			triangle(xOffset + 150, yOffset + 350, xOffset + 190, yOffset + 350, xOffset + 170, yOffset + 400);
+			triangle(xOffset + 210, yOffset + 350, xOffset + 250, yOffset + 350, xOffset + 230, yOffset + 400);
+			
+			// Windows
+			fill(#FFFFFF);
+			stroke(#3AAA6F);
+			strokeWeight(4);
+			ellipse(xOffset + 200, yOffset + 170, 60, 60);
+			ellipse(xOffset + 200, yOffset + 250, 60, 60);
+		</code>
+		<codeDisplay id="rocketOffset" />
+		<text>
+			Now you can change the value of `xOffset` and `yOffset` to move the whole rocket 
+			all at once!
+		</text>
+	</segment>
+	<segment>
+		<text>
+			How does the code with variables on the previous page work?
+		</text>
+		<text>
+			First, we create a variable that holds the offset and give it a value:
+		</text>
+		<code>
+			int xOffset = 100;
+		</code>
+		<text>
+			`int` is the type of the variable; in this case, we have an integer. `xOffset` is the 
+			name of the variable, which we will use to reference it further down in the code. The 
+			last part is an assignment. `=` is the assignment operator, so `xOffset` now contains 
+			the value `100`.
+		</text>
+		<text>
+			Creating the variable doesn't do anything that we can see on the screen in and of 
+			itself, but the value is stored in the computer's memory to be accessed later.
+		</text>
+		<text>
+			After the variable is declared, we can access its value at any time, including when 
+			we want to draw shapes:
+		</text>
+		<code>
+			rect(xOffset, 100, 200, 200);
+		</code>
+		<text>
+			The above will draw the rectangle using the current value of `xOffset` as the `x` 
+			coordinate of the top-left corner. Alternatively, we can also perform additional 
+			operations, such as addition, to modify the variable value:
+		</text>
+		<code>
+			rect(xOffset + 100, 100, 200, 200);
+		</code>
+		<text>
+			`+`, the addition operator, adds together two numbers. In this case, if the current 
+			value of `xOffset` is `100`, then the rectangle will be drawn with an `x` coordinate of 
+			`100 + 100`, or `200`. This is what we did for each of the `x` and `y` values for the 
+			example on the previous page.
+		</text>
+	</segment>
+	<segment>
+		<text>
+			We can also use variables to control other aspects of the rocket:
+		</text>
+		<code runnable="true" pickable="true" display="rocketModular">
+			// x and y offsets for entire rocket
+			int xOffset = @Picker("number", 100);
+			int yOffset = @Picker("number", 0);
+			
+			// Measures
+			int windowDiameter = @Picker("number", 60);
+			int rocketWidth = @Picker("number", 100);
+			
+			// Color of both body and nose
+			color rocketColor = @Picker("color", #C1C1C1);
+			
+			// Sky
+			background(#85E8E2);
+			
+			// Nose
+			fill(rocketColor);
+			triangle(xOffset + 200 - rocketWidth / 2, yOffset + 120, xOffset + 200 + rocketWidth / 2, yOffset + 120, xOffset + 200, yOffset + 50);
+			
+			// Engines
+			fill(#6C6C6C);
+			triangle(xOffset + 170, yOffset + 300, xOffset + 140, yOffset + 350, xOffset + 200, yOffset + 350);
+			triangle(xOffset + 230, yOffset + 300, xOffset + 200, yOffset + 350, xOffset + 260, yOffset + 350);
+			
+			// Body
+			fill(rocketColor);
+			rect(xOffset + 200 - rocketWidth / 2, yOffset + 120, rocketWidth, 200);
+			
+			// Exhaust (hot!)
+			fill(#BF3E3E);
+			triangle(xOffset + 150, yOffset + 350, xOffset + 190, yOffset + 350, xOffset + 170, yOffset + 400);
+			triangle(xOffset + 210, yOffset + 350, xOffset + 250, yOffset + 350, xOffset + 230, yOffset + 400);
+			
+			// Windows
+			fill(#FFFFFF);
+			stroke(#3AAA6F);
+			strokeWeight(4);
+			ellipse(xOffset + 200, yOffset + 170, windowDiameter, windowDiameter);
+			ellipse(xOffset + 200, yOffset + 250, windowDiameter, windowDiameter);
+		</code>
+		<codeDisplay id="rocketModular" />
+		<text>
+			`color` is another variable type that stores a color value. It works the same way as 
+			`int`, except you use it in places that take colors instead of numbers.
+		</text>
+		<text>
+			The implementation of `rocketWidth` is a little tricky because it requires some math. 
+			The center of the rocket is at `xOffset + 200`. The left side of the rocket is the 
+			center minus half of the width: `xOffset + 200 - rocketWidth / 2`. Similarly, the right 
+			side of the rocket is `xOffset + 200 + rocketWidth / 2`.
+		</text>
+		<text>
+			You have to keep the order of operations in mind when using multiple operators. The 
+			order of operations is parentheses, multiplication and division, and then addition and 
+			subtraction. Therefore `xOffset + 200 - rocketWidth / 2` is interpreted as `xOffset + 
+			200 - (rocketWidth / 2)` because the division is executed before the subtraction. If 
+			you have a different scenario where you want to perform the addition or subtraction 
+			before the multiplication or division, then you must surround that operation with 
+			parentheses, for example: `(a + b) / c`.
+		</text>
+	</segment>
+	<segment>
+		<text>
+			Let's review. These are the variable types that you have learned so far:
+		</text>
+		<text>`int` is an integer, e.g. `100`.</text>
+		<text>`color` is a color, e.g. `#FFFFFF`.</text>
+		<text>
+			These are some of the operators that may be used on `int`s:
+		</text>
+		<text>`=` is assignment, e.g. `int x = 100;` or `x = 200;`.</text>
+		<text>`+` is addition, e.g. `x + 100`.</text>
+		<text>'-' is subtraction, e.g. 'x - 100'.</text>
+		<text>'*' is multiplication, e.g. 'x * 2'.</text>
+		<text>'/' is division, e.g. 'x / 2'.</text>
+	</segment>
+</skillTutorial>

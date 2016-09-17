@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<curriculum>
+	<node name="intro" prerequisite="">
+		<title value="Introduction" />
+		<desc value="Introduction to APDE and the learning curriculum." />
+		<pos x="0" y="0" />
+	</node>
+	<node name="drawing" prerequisite="intro">
+		<title value="Drawing Functions" />
+		<desc value="Draw basic shapes." />
+		<pos x="0" y="100" />
+	</node>
+	<node name="debugging" prerequisite="drawing">
+		<title value="Debugging" />
+		<desc value="Debug your sketches with print statements." />
+		<pos x="300" y="0" />
+	</node>
+	<node name="images" prerequisite="variables">
+		<title value="Images" />
+		<desc value="Load and display images." />
+		<pos x="-300" y="200" />
+	</node>
+	<node name="curves" prerequisite="drawing">
+		<title value="Curves" />
+		<desc value="Draw arcs and Bezier curves." />
+		<pos x="300" y="100" />
+	</node>
+	<node name="variables" prerequisite="drawing">
+		<title value="Variables" />
+		<desc value="Use variables to simplify your code." />
+		<pos x="0" y="200" />
+	</node>
+	<node name="color" prerequisite="drawing">
+		<title value="Color" />
+		<desc value="Learn about the RGB and HSB color models." />
+		<pos x="-300" y="100" />
+	</node>
+	<node name="loops" prerequisite="variables">
+		<title value="Loops" />
+		<desc value="Use for loops to perform repetitive tasks and simplify your code." />
+		<pos x="0" y="300" />
+	</node>
+	<node name="setup_draw" prerequisite="loops">
+		<title value="setup() &amp; draw()" />
+		<desc value="Introduction to setup() and draw(), the basis for interactive Processing sketches." />
+		<pos x="0" y="400" />
+	</node>
+	<node name="logic_conditionals" prerequisite="setup_draw">
+		<title value="Logic &amp; Conditionals" />
+		<desc value="Use branch statements and boolean logic to control program flow." />
+		<pos x="300" y="300" />
+	</node>
+	<node name="arrays" prerequisite="setup_draw">
+		<title value="Arrays" />
+		<desc value="Use arrays to store many values of the same type." />
+		<pos x="300" y="400" />
+	</node>
+	<node name="text" prerequisite="variables">
+		<title value="Text" />
+		<desc value="Draw text." />
+		<pos x="300" y="200" />
+	</node>
+	<node name="strings" prerequisite="text">
+		<title value="Strings" />
+		<desc value="Use strings, the variable type for text." />
+		<pos x="600" y="200" />
+	</node>
+	<node name="pixels" prerequisite="arrays">
+		<title value="Pixels" />
+		<desc value="Directly manipulate the screen and image pixel arrays." />
+		<pos x="300" y="500" />
+	</node>
+	<node name="2d_arrays" prerequisite="arrays">
+		<title value="2D Arrays" />
+		<desc value="Use two-dimensional arrays to represent complex data." />
+		<pos x="600" y="500" />
+	</node>
+	<node name="touch_input" prerequisite="logic_conditionals">
+		<title value="Touch Input" />
+		<desc value="Create interactive sketches with touch input." />
+		<pos x="600" y="300" />
+	</node>
+	<node name="multitouch" prerequisite="touch_input,arrays">
+		<title value="Multitouch" />
+		<desc value="Take advantage of smartphone touch screens' multitouch capabilities." />
+		<pos x="600" y="400" />
+	</node>
+	<node name="functions" prerequisite="setup_draw">
+		<title value="Functions" />
+		<desc value="Use functions and methods to separate repetitive tasks from your main code." />
+		<pos x="0" y="500" />
+	</node>
+	<node name="objects" prerequisite="functions,arrays">
+		<title value="Objects" />
+		<desc value="Use classes to group common variables and methods together and modularize your code." />
+		<pos x="0" y="600" />
+	</node>
+	<node name="3d" prerequisite="setup_draw">
+		<title value="3D" />
+		<desc value="Draw scenes in 3D." />
+		<pos x="-300" y="500" />
+	</node>
+	<node name="shaders" prerequisite="3d">
+		<title value="Shaders" />
+		<desc value="Use GLSL shaders to extend Processing's 3D drawing capabilities." />
+		<pos x="-600" y="500" />
+	</node>
+	<node name="transformations" prerequisite="setup_draw">
+		<title value="Transformations" />
+		<desc value="Apply transformations to offset and rotate shapes." />
+		<pos x="-300" y="400" />
+	</node>
+	<node name="trigonometry" prerequisite="transformations">
+		<title value="Trigonometry" />
+		<desc value="Take advantage of basic trigonometry to perform transformations mathematically." />
+		<pos x="-600" y="400" />
+	</node>
+	<node name="vectors" prerequisite="setup_draw">
+		<title value="Vectors" />
+		<desc value="Use PVector to store vector quantities." />
+		<pos x="-300" y="300" />
+	</node>
+</curriculum>
