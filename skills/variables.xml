@@ -203,8 +203,8 @@
 		</text>
 		<text>`=` is assignment, e.g. `int x = 100;` or `x = 200;`.</text>
 		<text>`+` is addition, e.g. `x + 100`.</text>
-		<text>'-' is subtraction, e.g. 'x - 100'.</text>
-		<text>'*' is multiplication, e.g. 'x * 2'.</text>
-		<text>'/' is division, e.g. 'x / 2'.</text>
+		<text>`-` is subtraction, e.g. `x - 100`.</text>
+		<text>`*` is multiplication, e.g. `x * 2`.</text>
+		<text>`/` is division, e.g. `x / 2`.</text>
 	</segment>
 </skillTutorial>
